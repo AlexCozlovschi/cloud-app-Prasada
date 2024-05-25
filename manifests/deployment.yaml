@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudappdeploy
+  labels:
+    app: cloudappdeploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudappdeploy
+  template:
+    metadata:
+      labels:
+        app: cloudappdeploy
+    spec:
+      containers:
+        - name: cloudappdeploy
+          image: cloudappprasada.azurecr.io/image-workflow-1716641907692:latest
+          ports:
+            - containerPort: 3000
